@@ -4,4 +4,9 @@ from django.contrib import admin
 
 from .models import Project
 
+
+#class CustomProjectAdmin(UserAdmin):
+#    pass
+
+
 admin.site.register(Project)
