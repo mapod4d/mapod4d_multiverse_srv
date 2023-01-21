@@ -26,7 +26,7 @@ class Metaverse(models.Model):
     mapod4d_id = models.CharField(max_length=50, unique=True, null=False, validators=[alphanumeric])
     link = models.URLField(default='')
     description = models.TextField(max_length=200, default='')
-    project = models.ForeignKey(to=Project, on_delete=models.CASCADE, related_name="metaverse")
+    project = models.ForeignKey(to=Project, on_delete=models.CASCADE, related_name="metaverses")
 
     def __str__(self):
         return self.mapod4d_id
