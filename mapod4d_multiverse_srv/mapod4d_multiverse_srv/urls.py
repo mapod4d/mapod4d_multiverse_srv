@@ -29,6 +29,6 @@ urlpatterns = [
     path('api/auth/', include('users.api.urls')),
 
     ## 
-    path('multiverse/', include('multiverse.urls')),
+    path('', include('multiverse.urls')),
     #path('projects/', include('projects.urls')),
 ]

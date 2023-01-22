@@ -1,6 +1,6 @@
 from django.urls import path, include
 
 urlpatterns = [
-    path('api/', include('multiverse.api.urls')),
+    path('api/multiverse/', include('multiverse.api.urls')),
 ]
 

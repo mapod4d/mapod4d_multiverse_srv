@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users',
     'multiverse',
     'projects',
+    'softwares',
 ]
 
 MIDDLEWARE = [
@@ -144,4 +145,4 @@ REST_KNOX = {
     'USER_SERIALIZER': 'users.api.serializers.CustomUserSerializer'
 }
 
-
+from .settings_local import *
