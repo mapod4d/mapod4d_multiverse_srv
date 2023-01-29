@@ -6,4 +6,6 @@ __pycache__/
 
 api/
 mp4dms_venv/
+db.sqlite3
+settings_local.py
 

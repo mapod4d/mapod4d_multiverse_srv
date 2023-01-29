@@ -1,0 +1,6 @@
+CREATE DATABASE mapod4d_mult_srv;
+CREATE USER mapod4d_mult_u WITH PASSWORD 'password';
+ALTER ROLE mapod4d_mult_u SET client_encoding TO 'utf8';
+ALTER ROLE mapod4d_mult_u SET default_transaction_isolation TO 'read committed';
+ALTER ROLE mapod4d_mult_u SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE mapod4d_mult_srv TO mapod4d_mult_u;
