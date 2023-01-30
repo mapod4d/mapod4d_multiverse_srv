@@ -25,7 +25,7 @@ from mapod4d_conf.settings_local import *
 # SECRET_KEY = 'django-insecure-chu)o2r8t##wbz7br#=x+vyfi30qt&o4@gs#3ia+9x+q0h77qe'
 # 
 # # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'knox',
+
+    'front',
 
     'users',
     'multiverse',
@@ -66,7 +68,9 @@ ROOT_URLCONF = 'mapod4d_multiverse_srv.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates/'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

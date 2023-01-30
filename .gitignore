@@ -5,8 +5,8 @@ __pycache__/
 *.py.swp
 
 
-api/
-mp4dms_venv/
+/api/
+/mp4dms_venv/
 db.sqlite3
 settings_local.py
 
