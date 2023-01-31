@@ -28,7 +28,7 @@ urlpatterns = [
     #path('api/auth/logoutall/', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
 
     path('api/auth/', include('users.api.urls')),
-    path('api/multiverse', include('multiverse.urls')),
+    path('api/multiverse/', include('multiverse.urls')),
 
     ## 
     path('', include('front.urls')),
