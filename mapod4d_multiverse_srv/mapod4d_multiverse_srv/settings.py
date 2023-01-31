@@ -26,7 +26,7 @@ from mapod4d_conf.settings_local import *
 # SECRET_KEY = 'django-insecure-chu)o2r8t##wbz7br#=x+vyfi30qt&o4@gs#3ia+9x+q0h77qe'
 # 
 # # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

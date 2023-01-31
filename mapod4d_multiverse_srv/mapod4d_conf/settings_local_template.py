@@ -26,6 +26,14 @@ DATABASES = {
 MAPOD4D = {
    'multiverse': {
        'name': 'test',
+       'v1': 2,
+       'v2': 0,
+       'v3': 0,
+       'v4': 52,
     },
 }
+
+CSRF_TRUSTED_ORIGINS = [
+        'http://aass.as.sas',
+]
 
