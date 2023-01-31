@@ -12,6 +12,10 @@ class ProjectMetaverseSerializer(serializers.ModelSerializer):
 
 class MultiverseSerializer(serializers.Serializer):
     name = serializers.CharField()
+    v1 = serializers.IntegerField()
+    v2 = serializers.IntegerField()
+    v3 = serializers.IntegerField()
+    v4 = serializers.IntegerField()
 
 
 class MetaverseSerializer(serializers.ModelSerializer):

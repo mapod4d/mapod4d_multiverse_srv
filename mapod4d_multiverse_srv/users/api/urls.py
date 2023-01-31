@@ -5,7 +5,7 @@ from users.api.views import CustomLoginView
 
 
 urlpatterns = [
-    path('login/', CustomLoginView.as_view(), name='knox_login'),
-    path('logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
-    path('logoutall/', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
+    path('user/login/', CustomLoginView.as_view(), name='knox_login'),
+    path('user/logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
+    path('users/logoutall/', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
 ]

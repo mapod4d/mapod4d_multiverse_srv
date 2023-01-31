@@ -22,16 +22,12 @@ from users.api.views import CustomLoginView
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    ## REST API
-    #path('api/auth/login/', CustomLoginView.as_view(), name='knox_login'),
-    #path('api/auth/logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
-    #path('api/auth/logoutall/', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
+    path('', include('users.urls')),
+    path('', include('multiverse.urls')),
+    path('', include('projects.urls')),
+    path('', include('softwares.urls')),
 
-    path('api/auth/', include('users.api.urls')),
-    path('api/multiverse/', include('multiverse.urls')),
-
-    ## 
+    ## frontend
     path('', include('front.urls')),
-    #path('projects/', include('projects.urls')),
 ]
 

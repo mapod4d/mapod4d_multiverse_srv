@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+{% for value in list %}
+    <div>{{ value }}</div>
+{% endfor %}
+<br>
+
+{% endblock %}
