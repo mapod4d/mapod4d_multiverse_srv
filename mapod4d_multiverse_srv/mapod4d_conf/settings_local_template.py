@@ -34,6 +34,6 @@ MAPOD4D = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-        'http://aass.as.sas',
+        'http://127.0.0.1',
 ]
 
