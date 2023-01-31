@@ -1,3 +1,4 @@
+import mapod4d_multiverse_srv.mains_settings
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -25,6 +26,14 @@ DATABASES = {
 MAPOD4D = {
    'multiverse': {
        'name': 'test',
+       'v1': 2,
+       'v2': 0,
+       'v3': 0,
+       'v4': 52,
     },
 }
+
+CSRF_TRUSTED_ORIGINS = [
+        'http://127.0.0.1',
+]
 
