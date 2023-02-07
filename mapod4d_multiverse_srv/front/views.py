@@ -23,14 +23,14 @@ class ApiHelpView(TemplateView):
         list = []
         list.append('api/user/login/')
         list.append('api/user/logout/')
-        list.append('api/user/logoutall/')
-        list.append('api/user/multiverse/')
-        list.append('api/user/multiverse/metaverses/')
-        list.append('api/user/multiverse/metaverse/<name>')
-        list.append('api/user/projects/')
-        list.append('api/user/project/<id>')
-        list.append('api/user/softwares/')
-        list.append('api/user/software/<name>')
+        list.append('api/users/logoutall/')
+        list.append('api/multiverse/')
+        list.append('api/multiverse/metaverses/')
+        list.append('api/multiverse/metaverse/<name>')
+        list.append('api/projects/')
+        list.append('api/project/<id>')
+        list.append('api/softwares/')
+        list.append('api/software/<name>')
         context['list'] = list
 
         return context
