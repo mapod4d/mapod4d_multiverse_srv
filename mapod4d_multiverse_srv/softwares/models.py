@@ -13,6 +13,8 @@ class Software(models.Model):
     v2 = models.PositiveIntegerField(default=0, null=False)
     v3 = models.PositiveIntegerField(default=0, null=False)
     v4 = models.PositiveIntegerField(default=0, null=False)
+    bricks = models.PositiveIntegerField(default=1, null=False)
+    compress = models.BooleanField(default=False, null=False)
     description = models.TextField(max_length=200, default='')
 
     def __str__(self):
