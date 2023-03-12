@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'multiverse',
     'projects',
     'softwares',
+    'mapod4d',
 ]
 
 MIDDLEWARE = [
