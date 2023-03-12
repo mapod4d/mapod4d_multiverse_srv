@@ -7,7 +7,7 @@ __pycache__/
 
 /api/
 /mp4dms_venv/
-db.sqlite3
-db.sqlite3.orig
+/mapod4d_multiverse_srv/db.sqlite3
+/mapod4d_multiverse_srv/db.sqlite3.orig
 settings_local.py
 
