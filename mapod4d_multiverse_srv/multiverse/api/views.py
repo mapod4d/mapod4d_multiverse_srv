@@ -1,4 +1,5 @@
 from multiverse.models import Metaverse
+from multiverse.models import Multiverse
 from multiverse.data import MultiverseData
 from .serializers import MetaverseSerializer, MultiverseSerializer
 from rest_framework.permissions import AllowAny
@@ -12,8 +13,13 @@ class MultiverseView(APIView):
 
     def get(self, request):
         data = MultiverseData()
-        serializer = MultiverseSerializer(data)
+        serializer = MultiverseDataSerializer(data)
         return Response(serializer.data)
+
+
+class MultiverseListView(generics.ListAPIView):
+    queryset = Multiverse.objects.all()
+    serializer_class = MultiverseSerializer
 
 
 class MetaverseListView(generics.ListAPIView):
