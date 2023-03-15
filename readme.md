@@ -1,2 +1,2 @@
-# mapod4d multiverse serverr c2
+# mapod4d multiverse server c2
 
