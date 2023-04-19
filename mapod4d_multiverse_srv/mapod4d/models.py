@@ -22,14 +22,20 @@ class Mapod4dVersion(models.Model):
     p = models.CharField(max_length=2, default="s", null=False)
     bricks = models.PositiveIntegerField(default=1, null=False)
     compress = models.BooleanField(default=False, null=False)
-    value = models.PositiveIntegerField(null=False)
     mapod4d = models.ForeignKey('Mapod4d', on_delete=models.CASCADE)
 
     class Meta:
         constraints = [
-            models.UniqueConstraint('v1', 'v2', 'v3', 'v4',  name='mapod4d_version'),
+            models.UniqueConstraint('mapod4d', 'v1', 'v2', 'v3', 'v4',  name='mapod4d_version'),
         ]
  
     def __str__(self):
-        return self.name
+        name = "_".join([
+                self.mapod4d.name,
+                str(self.v1),
+                str(self.v2),
+                str(self.v3),
+                str(self.v4)
+        ])
+        return name 
 

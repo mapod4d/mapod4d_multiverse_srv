@@ -18,7 +18,7 @@ class Multiverse(models.Model):
     description = models.TextField(max_length=200, default='')
 
     def __str__(self):
-        return "" + self.mapod4d_id
+        return self.mapod4d_id
 
 class Metaverse(models.Model):
     alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', 'Only alphanumeric characters are allowed.')
@@ -37,6 +37,7 @@ class MetaverseVersion(models.Model):
     v2 = models.PositiveIntegerField(default=0, null=False)
     v3 = models.PositiveIntegerField(default=0, null=False)
     v4 = models.PositiveIntegerField(default=0, null=False)
+    p = models.CharField(max_length=2, default="s", null=False)    
     bricks = models.PositiveIntegerField(default=1, null=False)
     compress = models.BooleanField(default=False, null=False)
     fmver = models.ForeignKey(to=Mapod4dVersion, on_delete=models.CASCADE, related_name="metaverseversions_from")
@@ -48,9 +49,17 @@ class MetaverseVersion(models.Model):
             models.UniqueConstraint('metaverse', 'fmver', 'tmver', name='metaverse_version_range'),
             models.UniqueConstraint('metaverse', 'fmver', name='metaverse_version_fromver'),
             models.UniqueConstraint('metaverse', 'tmver', name='metaverse_version_tover'),
+            models.UniqueConstraint('metaverse', 'v1', 'v2', 'v3', 'v4',  name='metaverse_version'),
 #            CheckConstraint(check=Q(fromver__value=18), name='version_range')
         ]
 
     def __str__(self):
-        return self.link
+        name = "_".join([
+                self.metaverse.mapod4d_id,
+                self.v1,
+                self.v2,
+                self.v3,
+                self.v4
+        ])
+        return name
 
