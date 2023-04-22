@@ -27,6 +27,7 @@ class ApiHelpView(TemplateView):
         list.append('api/multiverse/')
         list.append('api/multiverse/metaverses/')
         list.append('api/multiverse/metaverse/<name>')
+        list.append('api/multiverse/lastmetaverse/<name>/<mapod4dsversion>')
         list.append('api/projects/')
         list.append('api/project/<id>')
         list.append('api/softwares/')
