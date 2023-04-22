@@ -23,7 +23,7 @@ class Mapod4dVersion(models.Model):
     v4 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
     p = models.CharField(max_length=2, default="s", null=False)
     bricks = models.PositiveIntegerField(default=1, null=False)
-    compress = models.BooleanField(default=False, null=False)
+    compressed = models.BooleanField(default=True, null=False)
     mapod4d = models.ForeignKey('Mapod4d', on_delete=models.CASCADE)
 
     objects = Mapod4dVersionManager()

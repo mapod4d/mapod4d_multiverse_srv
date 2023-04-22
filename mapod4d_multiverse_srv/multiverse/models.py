@@ -48,7 +48,7 @@ class MetaverseVersion(models.Model):
     v4 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
     p = models.CharField(max_length=2, default="s", null=False)    
     bricks = models.PositiveIntegerField(default=1, null=False)
-    compress = models.BooleanField(default=False, null=False)
+    compressed = models.BooleanField(default=True, null=False)
     fmver = models.ForeignKey(to=Mapod4dVersion, on_delete=models.CASCADE, related_name="metaverseversions_from")
     tmver = models.ForeignKey(to=Mapod4dVersion, on_delete=models.CASCADE, related_name="metaverseversions_to")
     metaverse = models.ForeignKey(Metaverse, on_delete=models.CASCADE, related_name="metaverseversions")
