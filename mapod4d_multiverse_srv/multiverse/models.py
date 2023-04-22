@@ -1,10 +1,17 @@
 from django.db import models
 
 from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
+from django.db.models import F
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
+
+from django.contrib import admin
 from datetime import datetime
 from projects.models import Project
 from mapod4d.models import Mapod4dVersion
+from .managers import MetaverseVersionManager
+
 
 # Create your models here.
 
@@ -20,6 +27,7 @@ class Multiverse(models.Model):
     def __str__(self):
         return self.mapod4d_id
 
+
 class Metaverse(models.Model):
     alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', 'Only alphanumeric characters are allowed.')
 
@@ -31,35 +39,42 @@ class Metaverse(models.Model):
     def __str__(self):
         return self.mapod4d_id
 
+
 class MetaverseVersion(models.Model):
     link = models.URLField(default='')
-    v1 = models.PositiveIntegerField(default=0, null=False)
-    v2 = models.PositiveIntegerField(default=0, null=False)
-    v3 = models.PositiveIntegerField(default=0, null=False)
-    v4 = models.PositiveIntegerField(default=0, null=False)
+    v1 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
+    v2 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
+    v3 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
+    v4 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
     p = models.CharField(max_length=2, default="s", null=False)    
     bricks = models.PositiveIntegerField(default=1, null=False)
     compress = models.BooleanField(default=False, null=False)
     fmver = models.ForeignKey(to=Mapod4dVersion, on_delete=models.CASCADE, related_name="metaverseversions_from")
     tmver = models.ForeignKey(to=Mapod4dVersion, on_delete=models.CASCADE, related_name="metaverseversions_to")
-    metaverse = models.ForeignKey(Metaverse, on_delete=models.CASCADE)
+    metaverse = models.ForeignKey(Metaverse, on_delete=models.CASCADE, related_name="metaverseversions")
+
+    def get_sversion(self):
+        return '{v1:03d}{v2:03d}{v3:03d}{v4:03d}'.format(
+                v1=self.v1, v2=self.v2, v3=self.v3, v4=self.v4)
 
     class Meta:
         constraints = [
-            models.UniqueConstraint('metaverse', 'fmver', 'tmver', name='metaverse_version_range'),
-            models.UniqueConstraint('metaverse', 'fmver', name='metaverse_version_fromver'),
-            models.UniqueConstraint('metaverse', 'tmver', name='metaverse_version_tover'),
             models.UniqueConstraint('metaverse', 'v1', 'v2', 'v3', 'v4',  name='metaverse_version'),
-#            CheckConstraint(check=Q(fromver__value=18), name='version_range')
         ]
+
+    objects = MetaverseVersionManager()
+
+    def clean(self):
+        if self.fmver.sversion > self.tmver.sversion:
+            raise ValidationError(_("fmver can be lower of tmver."))
 
     def __str__(self):
         name = "_".join([
                 self.metaverse.mapod4d_id,
-                self.v1,
-                self.v2,
-                self.v3,
-                self.v4
+                str(self.v1),
+                str(self.v2),
+                str(self.v3),
+                str(self.v4)
         ])
         return name
 
