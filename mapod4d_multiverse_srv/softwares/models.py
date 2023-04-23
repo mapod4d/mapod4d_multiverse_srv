@@ -45,7 +45,9 @@ class Software(models.Model):
                 str(self.v1),
                 str(self.v2),
                 str(self.v3),
-                str(self.v4)
+                str(self.v4),
+                self.so,
+                self.p,
         ])
         return name
 
