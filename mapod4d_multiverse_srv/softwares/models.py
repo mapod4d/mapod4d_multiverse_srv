@@ -8,8 +8,8 @@ from .managers import SoftwareManager
 class Software(models.Model):
     alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', 'Only alphanumeric characters are allowed.')
 
-    OLINUX = "LI"
-    OWINDOWS = "W0"
+    OLINUX = "L00"
+    OWINDOWS = "W00"
 
     OPSYSTEM = [
         (OLINUX, "Linux"),
@@ -17,12 +17,13 @@ class Software(models.Model):
     ]
 
     name = models.CharField(max_length=15, null=False, validators=[alphanumeric])
-    so = models.CharField(max_length=2, choices=OPSYSTEM, null=False, default=OLINUX)
+    so = models.CharField(max_length=3, choices=OPSYSTEM, null=False, default=OLINUX)
     link = models.URLField(default='')
     v1 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
     v2 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
     v3 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
     v4 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
+    p = models.CharField(max_length=2, default="s", null=False)
     bricks = models.PositiveIntegerField(default=1, null=False)
     compressed = models.BooleanField(default=True, null=False)
     description = models.TextField(max_length=200, default='')

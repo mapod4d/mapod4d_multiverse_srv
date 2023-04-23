@@ -26,9 +26,13 @@ class SoftwareDetailView(generics.RetrieveAPIView):
             (self.__class__.__name__, lookup_url_kwarg)
         )
 
+        if 'so' not in self.kwargs:
+            raise Http404
+
         filter_kwargs = {self.lookup_field: self.kwargs[lookup_url_kwarg]}
         queryset = queryset.filter(**filter_kwargs)
 
+        queryset = queryset.filter(so=self.kwargs['so'])
         queryset = queryset.order_by('v1', 'v2', 'v3', 'v4')
 
         obj = queryset.last()
@@ -38,4 +42,5 @@ class SoftwareDetailView(generics.RetrieveAPIView):
         self.check_object_permissions(self.request, obj)
 
         return obj
+
 
