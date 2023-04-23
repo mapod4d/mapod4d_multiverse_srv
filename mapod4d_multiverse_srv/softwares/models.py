@@ -8,7 +8,16 @@ from .managers import SoftwareManager
 class Software(models.Model):
     alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', 'Only alphanumeric characters are allowed.')
 
+    OLINUX = "LI"
+    OWINDOWS = "W0"
+
+    OPSYSTEM = [
+        (OLINUX, "Linux"),
+        (OWINDOWS, "MS Windows"),
+    ]
+
     name = models.CharField(max_length=15, null=False, validators=[alphanumeric])
+    so = models.CharField(max_length=2, choices=OPSYSTEM, null=False, default=OLINUX)
     link = models.URLField(default='')
     v1 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
     v2 = models.PositiveIntegerField(default=0, null=False, validators=[MaxValueValidator(999)])
@@ -26,7 +35,7 @@ class Software(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint('name', 'v1', 'v2', 'v3', 'v4',  name='software_version'),
+            models.UniqueConstraint('name', 'so', 'v1', 'v2', 'v3', 'v4',  name='software_version'),
         ]
 
     def __str__(self):

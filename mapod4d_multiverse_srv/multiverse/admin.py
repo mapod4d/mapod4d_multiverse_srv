@@ -21,6 +21,7 @@ class MetaverseVersionAdmin(admin.ModelAdmin):
 class MetaverseVersionInline(admin.StackedInline):
     model = MetaverseVersion
     ordering = [ '-v1', '-v2', '-v3', '-v4',]
+    extra = 1
 
 
 @admin.register(Metaverse)
@@ -32,6 +33,8 @@ class MetaverseAdmin(admin.ModelAdmin):
 
 class MetaverseInline(admin.StackedInline):
     model = Metaverse
+    extra = 1
+
 
 @admin.register(Multiverse)
 class MultiverseAdmin(admin.ModelAdmin):

@@ -20,6 +20,7 @@ class Mapod4dVersionAdmin(admin.ModelAdmin):
 class Mapod4dVersionInline(admin.StackedInline):
     model = Mapod4dVersion
     ordering = [ '-v1', '-v2', '-v3', '-v4',]
+    extra = 1
 
 
 @admin.register(Mapod4d)
