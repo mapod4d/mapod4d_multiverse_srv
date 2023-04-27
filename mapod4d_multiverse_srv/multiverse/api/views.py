@@ -108,5 +108,5 @@ class LastMetaverseVersionDetailView(generics.RetrieveAPIView):
         if self.request.user.is_authenticated:
             pass
         else:
-            result = result.filter(project__name='public')
+            result = result.filter(metaverse__project__name='public')
         return result
